@@ -108,31 +108,30 @@ h2{font-size:clamp(30px,4.6vw,52px);color:var(--ink);margin-bottom:8px}
 .began-art svg{width:100%;max-width:280px;height:auto}
 
 /* 3. JOURNEY */
-#journey{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:var(--paper-on-navy)}
+#journey{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:var(--paper-on-navy);padding-top:74px;padding-bottom:52px}
 #journey .stars{position:absolute;inset:0;z-index:0}
-#journey .inner{max-width:960px}
-.journey-head{text-align:center;margin-bottom:44px}
-.journey-head .quote{margin:16px auto 0;text-align:left;display:inline-block}
-.timeline{position:relative;max-width:860px;margin:0 auto}
-.timeline::before{content:"";position:absolute;left:50%;top:6px;bottom:64px;width:2px;transform:translateX(-50%);
-  background:linear-gradient(var(--gold-soft),var(--gold),rgba(207,148,69,.25));box-shadow:0 0 16px rgba(207,148,69,.35)}
-.stop{position:relative;width:100%;display:flex;margin-bottom:22px}
-.stop:nth-child(odd){justify-content:flex-start}
-.stop:nth-child(even){justify-content:flex-end}
-.stop .card{width:calc(50% - 44px);background:rgba(243,236,223,.05);border:1px solid var(--line-on-navy);border-radius:15px;padding:15px 19px;backdrop-filter:blur(3px)}
-.stop:nth-child(odd) .card{text-align:right}
-.stop .card h3{font-size:19px;color:var(--gold-soft);margin-bottom:3px;font-weight:600}
-.stop .card p{font-size:14.5px;line-height:1.5;color:#cdd6d7}
-.node{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:38px;height:38px;border-radius:50%;
+#journey .inner{max-width:1060px}
+.journey-head{text-align:center;margin-bottom:26px}
+.journey-body{display:flex;gap:44px;align-items:center}
+.timeline{position:relative;flex:1.7;padding-left:2px}
+.timeline::before{content:"";position:absolute;left:19px;top:10px;bottom:12px;width:2px;
+  background:linear-gradient(var(--gold-soft),var(--gold),rgba(207,148,69,.3));box-shadow:0 0 16px rgba(207,148,69,.35)}
+.stop{position:relative;display:flex;margin-bottom:12px;padding-left:52px}
+.stop:last-child{margin-bottom:0}
+.stop .card{flex:1;background:rgba(243,236,223,.05);border:1px solid var(--line-on-navy);border-radius:13px;padding:11px 16px;backdrop-filter:blur(3px)}
+.stop .card h3{font-size:16.5px;color:var(--gold-soft);margin-bottom:2px;font-weight:600}
+.stop .card p{font-size:13.5px;line-height:1.45;color:#cdd6d7}
+.node{position:absolute;left:19px;top:9px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;
   background:radial-gradient(circle at 35% 30%,var(--gold-soft),var(--gold));color:var(--navy-3);
-  display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:16px;
-  box-shadow:0 0 0 5px rgba(207,148,69,.14),0 0 20px rgba(207,148,69,.55);z-index:2}
-.destination{text-align:center;margin-top:6px;position:relative;z-index:2}
-.destination .lh{width:78px;height:auto;filter:drop-shadow(0 0 22px rgba(230,187,114,.45))}
-.destination .beamwrap{position:relative;display:inline-block}
-.destination .beam{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);width:280px;height:200px;z-index:-1;
+  display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:15px;
+  box-shadow:0 0 0 4px rgba(207,148,69,.14),0 0 18px rgba(207,148,69,.5);z-index:2}
+.journey-aside{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.journey-aside .quote{border-left:0;padding:0;max-width:24ch;text-align:center;font-size:clamp(16px,1.9vw,20px);margin-bottom:8px}
+.journey-aside .beamwrap{position:relative;display:inline-block}
+.journey-aside .lh{width:104px;height:auto;filter:drop-shadow(0 0 22px rgba(230,187,114,.45))}
+.journey-aside .beam{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);width:250px;height:210px;z-index:-1;
   background:conic-gradient(from 270deg at 50% 100%,transparent 58%,rgba(230,187,114,.16) 66%,rgba(230,187,114,.28) 75%,rgba(230,187,114,.16) 84%,transparent 92%);filter:blur(2px);border-radius:50% 50% 0 0/100% 100% 0 0}
-.destination p{font-family:'Fraunces',serif;font-style:italic;color:var(--gold-soft);font-size:17px;margin-top:6px}
+.journey-aside .continues{font-family:'Fraunces',serif;font-style:italic;color:var(--gold-soft);font-size:16px;margin-top:6px}
 
 /* 4. METHOD */
 #method{background:var(--paper)}
@@ -156,20 +155,21 @@ h2{font-size:clamp(30px,4.6vw,52px);color:var(--ink);margin-bottom:8px}
 .results-close{margin-top:26px;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(17px,2vw,21px);color:var(--navy);text-align:center;max-width:58ch;margin-left:auto;margin-right:auto}
 
 /* 6. TESTIMONIAL + CTA */
-#close{background:radial-gradient(1200px 760px at 50% 6%,#26506a,var(--navy-2) 60%,var(--navy-3));color:var(--paper-on-navy);text-align:center}
+#close{background:radial-gradient(1200px 760px at 50% 6%,#26506a,var(--navy-2) 60%,var(--navy-3));color:var(--paper-on-navy);text-align:center;padding-top:64px;padding-bottom:40px}
 #close .tribute-beam{position:absolute;top:-6%;left:50%;transform:translateX(-50%);width:min(900px,120vw);height:66%;z-index:0;
   background:conic-gradient(from 180deg at 50% 0,transparent 43%,rgba(230,187,114,.10) 47%,rgba(230,187,114,.20) 50%,rgba(230,187,114,.10) 53%,transparent 57%);filter:blur(3px)}
-#close .inner{max-width:900px}
-.tcard{background:rgba(9,20,28,.42);border:1px solid var(--line-on-navy);border-radius:22px;padding:clamp(28px,4vw,44px);max-width:820px;margin:26px auto 0;backdrop-filter:blur(4px)}
-.tcard .mark{font-family:'Fraunces',serif;font-size:92px;line-height:.5;color:rgba(230,187,114,.35);display:block;height:42px}
-.tcard blockquote{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:clamp(24px,3.7vw,40px);line-height:1.26;color:var(--gold-soft);text-shadow:0 0 40px rgba(230,187,114,.22);margin:0 auto;max-width:22ch}
-.tcard .said{font-size:clamp(15px,1.7vw,17.5px);color:#d5dddf;max-width:56ch;margin:0 auto 22px;line-height:1.7}
-.tcard .by{margin-top:22px;font-size:13.5px;letter-spacing:.04em;color:#aebdc4}
+#close .inner{max-width:1060px}
+#close h2{font-size:clamp(26px,3.2vw,40px);margin-bottom:2px}
+.tcard{background:rgba(9,20,28,.42);border:1px solid var(--line-on-navy);border-radius:22px;padding:clamp(20px,2.4vw,30px) clamp(26px,4vw,52px);max-width:1000px;margin:16px auto 0;backdrop-filter:blur(4px)}
+.tcard .mark{font-family:'Fraunces',serif;font-size:66px;line-height:.5;color:rgba(230,187,114,.35);display:block;height:24px}
+.tcard blockquote{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:clamp(20px,2.6vw,31px);line-height:1.22;color:var(--gold-soft);text-shadow:0 0 40px rgba(230,187,114,.22);margin:0 auto;max-width:40ch}
+.tcard .said{font-size:clamp(14px,1.5vw,16px);color:#d5dddf;max-width:76ch;margin:0 auto 14px;line-height:1.58}
+.tcard .by{margin-top:14px;font-size:13px;letter-spacing:.04em;color:#aebdc4}
 .tcard .by b{color:var(--paper-on-navy);font-weight:600}
-.cta-block{margin-top:44px}
-.cta-block h3{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(21px,2.7vw,30px);color:var(--paper-on-navy);margin-bottom:12px}
-.cta-block p{font-size:15.5px;color:#cdd6d7;max-width:52ch;margin:0 auto 24px;line-height:1.65}
-.cta-block .creds{margin-top:26px}
+.cta-block{margin-top:22px}
+.cta-block h3{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(19px,2.2vw,25px);color:var(--paper-on-navy);margin-bottom:8px}
+.cta-block p{font-size:14.5px;color:#cdd6d7;max-width:54ch;margin:0 auto 14px;line-height:1.55}
+.cta-block .creds{margin-top:16px}
 
 /* GATE */
 #gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;background:radial-gradient(1000px 700px at 50% 120%,#2b5570,#173241 60%,#0f2330);transition:opacity .6s ease}
@@ -202,11 +202,8 @@ html.cj-unlocked #gate{display:none}
 @media(max-width:640px){
   html{scroll-snap-type:none}
   section{padding:84px 20px}
-  .timeline::before{left:20px}
-  .stop{justify-content:flex-end!important}
-  .stop .card{width:calc(100% - 52px)}
-  .stop:nth-child(odd) .card{text-align:left}
-  .node{left:20px}
+  .journey-body{flex-direction:column;gap:26px}
+  .journey-aside{order:2}
   .dh{gap:8px;padding:0 10px}
   .dh-title,.dh-space{display:none}
   .df{font-size:10px;padding:0 12px}
@@ -220,13 +217,13 @@ html.cj-unlocked #gate{display:none}
   @page{margin:14mm}
   html{scroll-snap-type:none}
   html.cj-unlocked #gate,#gate{display:none!important}
-  .dh,.df,.scrollhint,.hero-scene,#journey .stars,.tribute-beam,.destination .beam{display:none!important}
+  .dh,.df,.scrollhint,.hero-scene,#journey .stars,.tribute-beam,.journey-aside .beam{display:none!important}
   body{background:#fff;color:#111;font-size:12pt}
   section{min-height:auto;page-break-inside:avoid;break-inside:avoid;padding:0 0 18mm;display:block}
   section+section{page-break-before:always}
   .reveal{opacity:1!important;transform:none!important}
   #hero,#journey,#close,#results,#began,#method{background:#fff!important;color:#111!important}
-  .on-navy h2,#close h2,.stop .card h3,.destination p,#hero h1,.hero-sub,.gift h3,.imp p b,.tcard .by b,.cta-block h3{color:#123!important}
+  .on-navy h2,#close h2,.stop .card h3,.journey-aside .continues,#hero h1,.hero-sub,.gift h3,.imp p b,.tcard .by b,.cta-block h3{color:#123!important}
   .on-navy .lead,.tcard .said,.cta-block p,.stop .card p,.began-body p,.gift p,.imp p{color:#333!important}
   .quote,.hero-q,.began-body .hl,.results-close{color:#7a4a1e!important}
   .tcard blockquote{color:#8a5a1f!important;text-shadow:none!important;font-size:24pt}
@@ -373,25 +370,27 @@ html.cj-unlocked #gate{display:none}
     <div class="journey-head">
       <div class="eyebrow reveal">How we worked</div>
       <h2 class="reveal d1">The arc of ten sessions</h2>
-      <div class="quote reveal d2">The journey of a thousand miles begins with one step.</div>
     </div>
-    <div class="timeline">
-      <div class="stop reveal"><span class="node">1</span>
-        <div class="card"><h3>Foundations</h3><p>We began with self-awareness &mdash; his behavioural profile, his values, and how his wiring shapes the way he leads.</p></div></div>
-      <div class="stop reveal"><span class="node">2</span>
-        <div class="card"><h3>Influence &amp; trust</h3><p>I brought the foundation every team rests on: trust &mdash; and we separated stated agreement from genuine commitment.</p></div></div>
-      <div class="stop reveal"><span class="node">3</span>
-        <div class="card"><h3>Mid-point review</h3><p>We held his progress up to the light, naming honestly what was landing and what still needed work.</p></div></div>
-      <div class="stop reveal"><span class="node">4</span>
-        <div class="card"><h3>Motivation &amp; culture</h3><p>We reframed motivation: people are moved differently than you are. Leadership is giving each person what they need &mdash; not what you need.</p></div></div>
-      <div class="stop reveal"><span class="node">5</span>
-        <div class="card"><h3>Push versus pull</h3><p>We mapped his team by skill and interest, and worked on leading &mdash; not only pleasing.</p></div></div>
-      <div class="stop reveal"><span class="node">6</span>
-        <div class="card"><h3>Review &amp; close</h3><p>A full reflection on how far he had come &mdash; and where the journey continues.</p></div></div>
-    </div>
-    <div class="destination reveal">
-      <div class="beamwrap"><span class="beam"></span><svg class="lh" viewBox="0 0 140 214"><use href="#lh"/></svg></div>
-      <p>&hellip;and the journey continues.</p>
+    <div class="journey-body">
+      <div class="timeline reveal d1">
+        <div class="stop"><span class="node">1</span>
+          <div class="card"><h3>Foundations</h3><p>Self-awareness first &mdash; his profile, his values, and how his wiring shapes the way he leads.</p></div></div>
+        <div class="stop"><span class="node">2</span>
+          <div class="card"><h3>Influence &amp; trust</h3><p>The foundation every team rests on &mdash; and the gap between stated agreement and real commitment.</p></div></div>
+        <div class="stop"><span class="node">3</span>
+          <div class="card"><h3>Mid-point review</h3><p>Holding his progress up to the light &mdash; what was landing, what still needed work.</p></div></div>
+        <div class="stop"><span class="node">4</span>
+          <div class="card"><h3>Motivation &amp; culture</h3><p>People are moved differently than you are &mdash; give each person what they need.</p></div></div>
+        <div class="stop"><span class="node">5</span>
+          <div class="card"><h3>Push versus pull</h3><p>Mapping the team by skill and interest &mdash; and learning to lead, not only to please.</p></div></div>
+        <div class="stop"><span class="node">6</span>
+          <div class="card"><h3>Review &amp; close</h3><p>A full reflection on how far he had come &mdash; and where the journey continues.</p></div></div>
+      </div>
+      <aside class="journey-aside reveal d2">
+        <div class="quote">The journey of a thousand miles begins with one step.</div>
+        <div class="beamwrap"><span class="beam"></span><svg class="lh" viewBox="0 0 140 214"><use href="#lh"/></svg></div>
+        <p class="continues">&hellip;and the journey continues.</p>
+      </aside>
     </div>
   </div>
 </section>
