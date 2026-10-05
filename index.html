@@ -73,6 +73,14 @@ h2{font-size:clamp(30px,4.6vw,52px);color:var(--ink);margin-bottom:8px}
   background:rgba(16,37,47,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(230,187,114,.14);
   font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8194a0}
 .df b{color:var(--gold-soft);font-weight:600}
+/* right-side progress rail — active section is an elongated pill */
+.rail{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column;align-items:center;gap:11px}
+.rail button{width:10px;height:10px;border-radius:50%;border:0;padding:0;cursor:pointer;background:rgba(30,58,76,.42);transition:height .4s cubic-bezier(.2,.7,.2,1),background .4s,box-shadow .4s}
+.rail button:hover{background:rgba(30,58,76,.65)}
+.rail.on-dark button{background:rgba(243,236,223,.45)}
+.rail.on-dark button:hover{background:rgba(243,236,223,.75)}
+.rail button.on{height:32px;border-radius:5px;background:linear-gradient(var(--gold-soft),var(--gold));box-shadow:0 0 14px rgba(207,148,69,.6)}
+.rail.on-dark button.on{background:linear-gradient(var(--gold-soft),var(--gold))}
 
 /* credential strip + CTA */
 .creds{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
@@ -127,10 +135,16 @@ h2{font-size:clamp(30px,4.6vw,52px);color:var(--ink);margin-bottom:8px}
   box-shadow:0 0 0 4px rgba(207,148,69,.14),0 0 18px rgba(207,148,69,.5);z-index:2}
 .journey-aside{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
 .journey-aside .quote{border-left:0;padding:0;max-width:24ch;text-align:center;font-size:clamp(16px,1.9vw,20px);margin-bottom:8px}
-.journey-aside .beamwrap{position:relative;display:inline-block}
-.journey-aside .lh{width:104px;height:auto;filter:drop-shadow(0 0 22px rgba(230,187,114,.45))}
-.journey-aside .beam{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);width:250px;height:210px;z-index:-1;
-  background:conic-gradient(from 270deg at 50% 100%,transparent 58%,rgba(230,187,114,.16) 66%,rgba(230,187,114,.28) 75%,rgba(230,187,114,.16) 84%,transparent 92%);filter:blur(2px);border-radius:50% 50% 0 0/100% 100% 0 0}
+.journey-aside .beamwrap{position:relative;display:inline-block;isolation:isolate}
+.journey-aside .lh{position:relative;z-index:2;width:104px;height:auto;filter:drop-shadow(0 0 16px rgba(230,187,114,.35));animation:lhlamp 7s ease-in-out infinite}
+/* rotating 360° lighthouse beacon — two opposing beams sweeping from the lantern */
+.journey-aside .beam{position:absolute;left:50%;top:30px;width:280px;height:280px;margin:-140px 0 0 -140px;z-index:1;pointer-events:none;
+  background:conic-gradient(rgba(240,202,128,.42) 0deg,rgba(240,202,128,0) 15deg,rgba(240,202,128,0) 165deg,rgba(240,202,128,.42) 180deg,rgba(240,202,128,0) 195deg,rgba(240,202,128,0) 345deg,rgba(240,202,128,.42) 360deg);
+  -webkit-mask:radial-gradient(closest-side,transparent 0,#000 15%,#000 40%,transparent 92%);
+          mask:radial-gradient(closest-side,transparent 0,#000 15%,#000 40%,transparent 92%);
+  filter:blur(5px);mix-blend-mode:screen;animation:lhsweep 7s linear infinite}
+@keyframes lhsweep{to{transform:rotate(360deg)}}
+@keyframes lhlamp{0%,100%{filter:drop-shadow(0 0 12px rgba(230,187,114,.28))}50%{filter:drop-shadow(0 0 26px rgba(240,202,128,.6))}}
 .journey-aside .continues{font-family:'Fraunces',serif;font-style:italic;color:var(--gold-soft);font-size:16px;margin-top:6px}
 
 /* 4. METHOD */
@@ -205,19 +219,20 @@ html.cj-unlocked #gate{display:none}
   .journey-body{flex-direction:column;gap:26px}
   .journey-aside{order:2}
   .dh{gap:8px;padding:0 10px}
-  .dh-title,.dh-space{display:none}
+  .dh-title,.dh-space,.rail{display:none}
   .df{font-size:10px;padding:0 12px}
 }
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
   .reveal{opacity:1!important;transform:none!important;transition:none!important}
-  .scrollhint svg{animation:none}
+  .scrollhint svg,.journey-aside .lh{animation:none}
+  .journey-aside .beam{animation:none;opacity:.7}
 }
 @media print{
   @page{margin:14mm}
   html{scroll-snap-type:none}
   html.cj-unlocked #gate,#gate{display:none!important}
-  .dh,.df,.scrollhint,.hero-scene,#journey .stars,.tribute-beam,.journey-aside .beam{display:none!important}
+  .dh,.df,.rail,.scrollhint,.hero-scene,#journey .stars,.tribute-beam,.journey-aside .beam{display:none!important}
   body{background:#fff;color:#111;font-size:12pt}
   section{min-height:auto;page-break-inside:avoid;break-inside:avoid;padding:0 0 18mm;display:block}
   section+section{page-break-before:always}
@@ -294,6 +309,7 @@ html.cj-unlocked #gate{display:none}
   <span>Christiana Mitcheva &middot; Leadership Coaching</span>
   <span class="df-count"><b id="dfNum">01</b> / <span id="dfTot">06</span></span>
 </footer>
+<nav class="rail" id="rail" aria-label="Section progress"></nav>
 
 <main id="page">
 
@@ -522,6 +538,16 @@ html.cj-unlocked #gate{display:none}
     nav.appendChild(b); return b;
   });
 
+  // right-side progress rail (active section = elongated pill)
+  var railWrap = document.getElementById('rail');
+  var rail = sections.map(function(s, i){
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', s.getAttribute('data-label') || ('Section '+(i+1)));
+    b.title = s.getAttribute('data-label') || '';
+    b.addEventListener('click', function(){ go(i); });
+    railWrap.appendChild(b); return b;
+  });
+
   function currentIndex(){
     var idx=0, best=Infinity;
     for(var i=0;i<total;i++){ var t=Math.abs(sections[i].getBoundingClientRect().top); if(t<best){best=t;idx=i;} }
@@ -530,6 +556,8 @@ html.cj-unlocked #gate{display:none}
   function updateChrome(){
     var cur = currentIndex();
     pills.forEach(function(p,i){ p.classList.toggle('on', i===cur); });
+    rail.forEach(function(d,i){ d.classList.toggle('on', i===cur); });
+    railWrap.classList.toggle('on-dark', sections[cur].classList.contains('on-navy'));
     if(dfNum) dfNum.textContent = pad(cur+1);
     var active = pills[cur];
     if(active && nav.scrollWidth > nav.clientWidth){ nav.scrollTo({left: Math.max(0, active.offsetLeft - nav.clientWidth/2 + active.offsetWidth/2), behavior:'smooth'}); }
